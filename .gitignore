@@ -31,7 +31,6 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
-.env*
 
 # vercel
 .vercel
@@ -40,5 +39,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 # Never commit local environment variables
-.env
-.env.*
+config.bat
+temp_auto_push.bat
+temp_interactive_push.bat
