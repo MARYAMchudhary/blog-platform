@@ -8,7 +8,7 @@ export default defineConfig({
     dialect: 'postgresql',
     dbCredentials: {
         // url: 'postgresql://postgres:875MW1YMmUqGZlIC@db.uvjrnfcgbchudvsrwbld.supabase.co:5432/postgres'
-        url: 'postgresql://postgres.uvjrnfcgbchudvsrwbld:875MW1YMmUqGZlIC@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres'
+        url: 'SUPABASE_DB_URL'
         // url: process.env.SUPABASE_DB_URL!
     }
 } satisfies Config)
