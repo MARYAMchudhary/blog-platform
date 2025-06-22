@@ -174,4 +174,4 @@ This project reflects **production-grade best practices** for scalable full-stac
   "format": "paragraph",
   "model": "command"
 }
-`
+
