@@ -1,36 +1,177 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Mini Blogging Platform
 
-## Getting Started
+A full-stack mini blogging platform built using **Next.js App Router**, **Supabase (Auth & DB)**, **Drizzle ORM**, **NextAuth.js**, **Redux Toolkit**, and **Cohere AI** for summarization.
 
-First, run the development server:
+This project demonstrates best practices across authentication, database integration, state management, API handling, protected routes, and 3rd-party AI integration.
+
+---
+
+## 🚀 Tech Stack
+
+- **Frontend:** Next.js (App Router), TailwindCSS
+- **Backend:** Next.js API Routes
+- **Database:** Supabase (PostgreSQL)
+- **ORM:** Drizzle ORM
+- **Auth:** NextAuth.js (with Supabase adapter)
+- **State Management:** Redux Toolkit
+- **3rd Party AI API:** Cohere AI Summarization API
+
+---
+
+## 📂 Features
+
+### ✅ Authentication
+
+- Email/password Sign Up & Login using Supabase.
+- Protected routes with NextAuth.js.
+- Redirect to `/login` if unauthenticated.
+- Redirect to `/signup` if login fails for non-existent users.
+
+### ✅ Database Schema (Drizzle ORM)
+
+- Uses Supabase DB with Drizzle ORM for schema migration.
+- Tables:
+
+  - `users`: Managed by Supabase Auth.
+  - `posts`: Stores user posts with title, content, summary.
+
+### ✅ Backend API Routes (Protected)
+
+- `POST /api/posts/create`: Create a new post.
+- `GET /api/posts/lists`: List posts for the logged-in user.
+- `POST /api/posts/summary`: Calls Cohere API to generate summary.
+
+### ✅ Frontend Pages
+
+- `/login`: Auth form with redirect to signup on failure.
+- `/signup`: Register new users.
+- `/dashboard`: Protected welcome screen.
+- `/dashboard/create`: Create new blog post.
+- `/dashboard/list`: List posts with “Generate Summary” button.
+
+### ✅ Redux Toolkit
+
+- `authSlice`: Manages user session globally.
+- `postSlice`: Manages posts list and loading states.
+- Global Redux store via `store.ts`.
+
+### ✅ Cohere AI Summarization
+
+- Integrated Cohere’s summarization API.
+- Auto-generates a medium-length paragraph summary for a post.
+- Uses `/api/posts/summary` internally.
+
+---
+
+## 🧠 Bonus Features (Completed)
+
+- ✅ TailwindCSS UI
+- ✅ Form validation local
+- ✅ Toast notifications (`react-hot-toast`)
+- ✅ Graceful error handling
+- ✅ Conditional rendering based on auth state
+
+---
+
+## 🛠️ How to Run the Project Locally
+
+Follow these steps to run this full-stack blogging platform on your local machine:
+
+### ✅ 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/mini-blog-platform.git
+cd mini-blog-platform
+```
+
+### ✅ 2. Install dependencies
+
+```bash
+npm install
+```
+
+### ✅ 3. Set up environment variables
+
+Create a `.env.local` file in the root directory and add your keys:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+
+NEXTAUTH_SECRET=your-nextauth-secret
+NEXTAUTH_URL=http://localhost:3000
+
+COHERE_API_KEY=your-cohere-api-key
+DATABASE_URL=your-supabase-postgres-url
+```
+
+> 📌 You can find these in your [Supabase Dashboard](https://app.supabase.com/) and [Cohere account](https://dashboard.cohere.com/).
+
+### ✅ 4. Run Drizzle DB Migration
+
+```bash
+npx drizzle-kit push:pg
+```
+
+### ✅ 5. Start the dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
+📍 `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### ✅ 6. Sign up and test
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Go to `/signup`, create a new user.
+- Confirm the email via your inbox.
+- Login at `/login`.
+- Create and summarize posts from the dashboard.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📤 Submission
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Public GitHub repo link
+- Includes `.env.example` (no real secrets)
+- All code in clean modular format
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔐 Key Objective
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project reflects **production-grade best practices** for scalable full-stack apps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Clean separation of concerns
+- Proper error handling and auth
+- Global state management with Redux
+- Secure API routes
+- 3rd-party AI integration
+
+---
+
+## 🤖 Cohere Summarization API Reference
+
+- **Endpoint:** `https://api.cohere.ai/v1/summarize`
+- **Method:** `POST`
+- **Headers:**
+
+```json
+{
+  "Authorization": "Bearer YOUR_COHERE_API_KEY",
+  "Content-Type": "application/json"
+}
+```
+
+- **Body:**
+
+```json
+{
+  "text": "Your content here",
+  "length": "medium",
+  "format": "paragraph",
+  "model": "command"
+}
+```
