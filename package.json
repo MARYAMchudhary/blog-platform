@@ -9,19 +9,31 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/supabase-adapter": "^1.9.1",
+    "@next-auth/supabase-adapter": "^0.2.1",
+    "@reduxjs/toolkit": "^2.8.2",
+    "@supabase/supabase-js": "^2.50.0",
+    "axios": "^1.10.0",
+    "drizzle-orm": "^0.44.2",
+    "next": "15.3.4",
+    "next-auth": "^4.24.11",
+    "postgres": "^3.4.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.3.4"
+    "react-hot-toast": "^2.5.2",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "drizzle-kit": "^0.31.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
